@@ -1,4 +1,5 @@
 import { createInterface } from "readline";
+import {commands} from "./constants.js";
 
 const fileManager = () => {
   const args = process.argv.slice(2);
@@ -16,15 +17,10 @@ const fileManager = () => {
     output: process.stdout
   });
 
-  rl.question('Please enter the command, you can use "--help" for more information\n', (command) => {
+  rl.question('Please enter the command, you can use --help for more information\n', (command) => {
     switch(command) {
       case '--help':
-        console.log(`
-        help - help
-        list - list files
-        create - create file
-        delete - delete file
-        `);
+        console.table(commands);
         break;
       case 'list':
         console.log('Listing files...');
