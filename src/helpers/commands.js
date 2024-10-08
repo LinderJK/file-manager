@@ -1,6 +1,6 @@
 export const commands = [
   {
-    command: '--help',
+    command: 'help',
     description: 'Provide help information about commands',
     type: 'text'
   },
