@@ -10,6 +10,9 @@ import add from "./commands/add.js";
 import rename from "./commands/rn.js";
 import cp from "./commands/cp.js";
 import move from "./commands/mv.js";
+import remove from "./commands/rm.js";
+import osinfo from "./commands/os.js";
+import osInfo from "./commands/os.js";
 
 
 const fileManager = () => {
@@ -24,7 +27,7 @@ const fileManager = () => {
     console.log(`Welcome to the File Manager, ${userName}!`);
     console.log("Enter the command. Type 'help' for a list of commands.");
     console.log(`You are currently in '${currentDirectory}'`);
-    
+
   }
 
   const rl = createInterface({
@@ -63,11 +66,17 @@ const fileManager = () => {
         case "rn":
           await rename(args);
           break;
-        case "cp": 
+        case "cp":
           await cp(args);
           break;
         case 'mv':
           await move(args);
+          break;
+        case 'rm':
+          await remove(args);
+          break;
+        case 'os':
+          await osInfo(args);
           break;
         // case "hash":
         //   await hash(args);
