@@ -9,6 +9,7 @@ import cat from "./commands/cat.js";
 import add from "./commands/add.js";
 import rename from "./commands/rn.js";
 import cp from "./commands/cp.js";
+import move from "./commands/mv.js";
 
 
 const fileManager = () => {
@@ -64,6 +65,9 @@ const fileManager = () => {
           break;
         case "cp": 
           await cp(args);
+          break;
+        case 'mv':
+          await move(args);
           break;
         // case "hash":
         //   await hash(args);
