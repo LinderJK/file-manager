@@ -3,7 +3,7 @@ import createError from "../helpers/createError.js";
 import path from "path";
 
 export default async function cd(args) {
-  if (args.length > 1 || args.length === 0) {
+  if (args.length === 0) {
     console.log("Invalid input: wrong argument type.");
     return;
   }
