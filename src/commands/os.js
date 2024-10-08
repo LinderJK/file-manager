@@ -25,7 +25,7 @@ function getCpus() {
   console.log(`Total CPUs: ${cpus.length}`);
   console.log(`Model: ${cpus[0].model}`);
   cpus.forEach((cpu, index) => {
-    console.log(`Speed: ${(cpu.speed / 1000).toFixed(2)} GHz`);
+    console.log(`Speed: ${(index + 1)} - ${(cpu.speed / 1000).toFixed(2)} GHz`);
     console.log('------------');
   })
 }
