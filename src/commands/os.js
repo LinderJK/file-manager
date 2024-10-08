@@ -14,8 +14,18 @@ export default async function osInfo(args) {
       process.stdout.write(`End of Line (EOL) marker: ${JSON.stringify(os.EOL)} \n`);
       break;
       case "--cpus":
-        process.stdout.write(`Number of CPUs: ${os.cpus().length} \n`);
+        getCpus();
         break;
 
 }
+}
+
+function getCpus() {
+  const cpus = os.cpus();
+  console.log(`Total CPUs: ${cpus.length}`);
+  console.log(`Model: ${cpus[0].model}`);
+  cpus.forEach((cpu, index) => {
+    console.log(`Speed: ${(cpu.speed / 1000).toFixed(2)} GHz`);
+    console.log('------------');
+  })
 }
