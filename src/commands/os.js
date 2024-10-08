@@ -30,6 +30,9 @@ export default async function osInfo(args) {
     case "--architecture":
       process.stdout.write(`Architecture: ${JSON.stringify(os.arch())} \n`);
       break;
+    default:
+      console.error("Invalid input: wrong argument type.");
+      break;
   }
 }
 
