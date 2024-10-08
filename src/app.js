@@ -3,6 +3,8 @@ import { commands } from "./helpers/commands.js";
 import { userName } from "./helpers/constants.js";
 import os from "os";
 import goUp from "./commands/up.js";
+import cd from "./commands/cd.js";
+import ls from "./commands/ls.js";
 
 
 const fileManager = () => {
@@ -25,6 +27,12 @@ const fileManager = () => {
     output: process.stdout,
   });
 
+  process.stdin.on("keypress", (ch, key) => {
+    if(key.name === 'tab') {
+      ls('');
+    }
+  });
+
   rl.on("line", async(line) => {
     const [command, ...args] = line.trim().split(" ");
     try {
@@ -32,15 +40,15 @@ const fileManager = () => {
         case "help":
           console.table(commands);
           break;
-        // case "cd":
-        //   await cd(args);
-        //   break;
-        case "up":
-          await goUp();
+        case "cd":
+          await cd(args);
           break;
-        // case "ls":
-        //   await ls();
-        //   break;
+        case "up":
+          await goUp(args);
+          break;
+        case "ls":
+          await ls(args);
+          break;
         // case "add":
         //   await add(args);
         //   break;
