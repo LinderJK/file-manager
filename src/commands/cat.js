@@ -18,7 +18,7 @@ export default async function cat(args) {
 
   const fileContent = createReadStream(filePath, "utf-8");
   fileContent.on("error", (err) => {
-    console.error(`Error reading file: ${err.message}`);
+    console.error(`Operation failed: Error reading file: ${err.message}`);
   });
   fileContent.pipe(process.stdout);
 }

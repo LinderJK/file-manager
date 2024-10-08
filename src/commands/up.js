@@ -9,7 +9,7 @@ export default async function goUp(args) {
   const parentDir = path.dirname(currentDir);
 
   if (currentDir === parentDir) {
-    console.log("You are already in the root directory.");
+    console.log("Operation failed: You are already in the root directory.");
     return;
   }
 

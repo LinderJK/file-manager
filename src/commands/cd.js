@@ -3,12 +3,12 @@ import createError from "../helpers/createError.js";
 import path from "path";
 
 export default async function cd(args) {
-  const [dir] = args;
-
-  if (!dir) {
+  if (args.length > 1 || args.length === 0) {
     console.log("Invalid input: wrong argument type.");
     return;
   }
+
+  const [dir] = args;
 
   const targetDir = path.isAbsolute(dir) ? dir : path.join(process.cwd(), dir);
 
