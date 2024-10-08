@@ -29,7 +29,7 @@ const fileManager = () => {
 
   process.stdin.on("keypress", (ch, key) => {
     if(key.name === 'tab') {
-      ls('');
+      ls('', true);
     }
   });
 
@@ -72,7 +72,7 @@ const fileManager = () => {
           break;
       }
         currentDirectory = process.cwd();
-       console.log(`You are currently in ${currentDirectory}`);
+        console.log(`You are currently in ${currentDirectory}`);
     } catch (error) {
       console.error(error);
     }
