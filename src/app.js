@@ -13,11 +13,13 @@ import move from "./commands/mv.js";
 import remove from "./commands/rm.js";
 import osinfo from "./commands/os.js";
 import osInfo from "./commands/os.js";
-
+import hash from "./commands/hash.js";
+import compress from "./commands/compress.js";
+import decompress from "./commands/decompress.js";
 
 const fileManager = () => {
   let currentDirectory = os.homedir();
-  if(currentDirectory) {
+  if (currentDirectory) {
     process.chdir(currentDirectory);
   }
   if (!userName) {
@@ -27,7 +29,6 @@ const fileManager = () => {
     console.log(`Welcome to the File Manager, ${userName}!`);
     console.log("Enter the command. Type 'help' for a list of commands.");
     console.log(`You are currently in '${currentDirectory}'`);
-
   }
 
   const rl = createInterface({
@@ -36,12 +37,12 @@ const fileManager = () => {
   });
 
   process.stdin.on("keypress", (ch, key) => {
-    if(key.name === 'tab') {
-      ls('', true);
+    if (key.name === "tab") {
+      ls("", true);
     }
   });
 
-  rl.on("line", async(line) => {
+  rl.on("line", async (line) => {
     const [command, ...args] = line.trim().split(" ");
     try {
       switch (command) {
@@ -69,44 +70,42 @@ const fileManager = () => {
         case "cp":
           await cp(args);
           break;
-        case 'mv':
+        case "mv":
           await move(args);
           break;
-        case 'rm':
+        case "rm":
           await remove(args);
           break;
-        case 'os':
+        case "os":
           await osInfo(args);
           break;
-        // case "hash":
-        //   await hash(args);
-        //   break;
-        // case "compress":
-        //   await compress(args);
-        //   break;
-        // case "decompress":
-        //   await decompress(args);
-        //   break;
-        case '.exit':
-          rl.emit('SIGINT');
+        case "hash":
+          await hash(args);
+          break;
+        case "compress":
+          await compress(args);
+          break;
+        case "decompress":
+          await decompress(args);
+          break;
+        case ".exit":
+          rl.emit("SIGINT");
           break;
         default:
           console.log("Invalid command");
           break;
       }
-        currentDirectory = process.cwd();
-        console.log(`You are currently in ${currentDirectory}`);
+      currentDirectory = process.cwd();
+      console.log(`You are currently in ${currentDirectory}`);
     } catch (error) {
       console.error(error);
     }
   });
 
-  rl.on('SIGINT', () => {
+  rl.on("SIGINT", () => {
     console.log(`Thank you for using File Manager, ${userName}, goodbye!`);
     process.exit();
-  })
-
-
+  });
 };
 
 fileManager();

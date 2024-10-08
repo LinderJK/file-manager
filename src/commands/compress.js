@@ -14,9 +14,11 @@ export default async function compress(args) {
 
   try {
     await fs.access(inputPath);
+    const fileName = path.basename(inputPath);
+    const filePath = path.join(outputPath, fileName + ".br");
     const gzip = createBrotliCompress();
     const rs = createReadStream(inputPath);
-    const ws = createWriteStream(outputPath);
+    const ws = createWriteStream(filePath);
     rs.pipe(gzip).pipe(ws);
 
     ws.on("finish", () => {
