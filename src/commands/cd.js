@@ -8,15 +8,15 @@ export default async function cd(args) {
     return;
   }
 
-  const [dir] = args;
+  const dir = args.join(' ');
+  const normalizedPath = path.normalize(dir);
 
-  const targetDir = path.isAbsolute(dir) ? dir : path.join(process.cwd(), dir);
+  const targetDir = path.isAbsolute(normalizedPath) ? normalizedPath : path.join(process.cwd(), normalizedPath);
 
   try {
     await fs.access(targetDir);
+    process.chdir(targetDir);
   } catch (err) {
-    createError(err);
+    console.log("Invalid input: directory not found.");
   }
-
-  process.chdir(targetDir);
 }
