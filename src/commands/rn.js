@@ -4,12 +4,16 @@ import createError from "../helpers/createError.js";
 
 
 export default async function rename(args) {
-  if (args.length !== 2) {
+  console.log(args, args.length);
+  if (args.length < 2) {
     console.log("Invalid input: wrong argument type.");
     return;
   }
 
-  const [filePath, newFileName] = args;
+
+  const newFileName = args.pop();
+  const filePath = path.normalize(args.join(' '));
+
   const directory = path.dirname(filePath);
   const newFilePath = path.join(directory, newFileName);
 
@@ -19,6 +23,6 @@ export default async function rename(args) {
     console.log(`File renamed successfully!`);
   } catch (err) {
     createError(err);
-  } 
+  }
 
 }
