@@ -11,7 +11,6 @@ import rename from "./commands/rn.js";
 import cp from "./commands/cp.js";
 import move from "./commands/mv.js";
 import remove from "./commands/rm.js";
-import osinfo from "./commands/os.js";
 import osInfo from "./commands/os.js";
 import hash from "./commands/hash.js";
 import compress from "./commands/compress.js";
