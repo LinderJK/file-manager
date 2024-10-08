@@ -5,6 +5,7 @@ import os from "os";
 import goUp from "./commands/up.js";
 import cd from "./commands/cd.js";
 import ls from "./commands/ls.js";
+import cat from "./commands/cat.js";
 
 
 const fileManager = () => {
@@ -52,9 +53,9 @@ const fileManager = () => {
         // case "add":
         //   await add(args);
         //   break;
-        // case "cat":
-        //   await cat(args);
-        //   break;
+        case "cat":
+          await cat(args);
+          break;
         // case "hash":
         //   await hash(args);
         //   break;
