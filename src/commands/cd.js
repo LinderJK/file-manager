@@ -8,10 +8,12 @@ export default async function cd(args) {
     return;
   }
 
-  const dir = args.join(' ');
+  const dir = args.join(" ");
   const normalizedPath = path.normalize(dir);
 
-  const targetDir = path.isAbsolute(normalizedPath) ? normalizedPath : path.join(process.cwd(), normalizedPath);
+  const targetDir = path.isAbsolute(normalizedPath)
+    ? normalizedPath
+    : path.join(process.cwd(), normalizedPath);
 
   try {
     await fs.access(targetDir);
