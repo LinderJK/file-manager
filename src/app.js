@@ -8,6 +8,7 @@ import ls from "./commands/ls.js";
 import cat from "./commands/cat.js";
 import add from "./commands/add.js";
 import rename from "./commands/rn.js";
+import cp from "./commands/cp.js";
 
 
 const fileManager = () => {
@@ -60,6 +61,9 @@ const fileManager = () => {
           break;
         case "rn":
           await rename(args);
+          break;
+        case "cp": 
+          await cp(args);
           break;
         // case "hash":
         //   await hash(args);
