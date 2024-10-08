@@ -6,6 +6,8 @@ import goUp from "./commands/up.js";
 import cd from "./commands/cd.js";
 import ls from "./commands/ls.js";
 import cat from "./commands/cat.js";
+import add from "./commands/add.js";
+import rename from "./commands/rn.js";
 
 
 const fileManager = () => {
@@ -50,11 +52,14 @@ const fileManager = () => {
         case "ls":
           await ls(args);
           break;
-        // case "add":
-        //   await add(args);
-        //   break;
+        case "add":
+          await add(args);
+          break;
         case "cat":
           await cat(args);
+          break;
+        case "rn":
+          await rename(args);
           break;
         // case "hash":
         //   await hash(args);
