@@ -9,13 +9,14 @@ export default async function rename(args) {
     return;
   }
 
-  const [oldName, newName] = args;
-  const file = path.join(process.cwd(), oldName);
-  
+  const [filePath, newFileName] = args;
+  const directory = path.dirname(filePath);
+  const newFilePath = path.join(directory, newFileName);
+
   try {
-    await fs.access(file);
-    await fs.rename(file, path.join(process.cwd(), newName));
-    console.log(`File '${oldName}' renamed to '${newName}' successfully!`);
+    await fs.access(filePath);
+    await fs.rename(filePath, newFilePath);
+    console.log(`File renamed successfully!`);
   } catch (err) {
     createError(err);
   } 
