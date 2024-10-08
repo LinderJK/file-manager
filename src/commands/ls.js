@@ -11,7 +11,7 @@ export default async function ls(args, useTab = false) {
     files.map(async (file) => {
       const itemPath = path.join(currentDir, file);
       const stats = await fs.lstat(itemPath);
-      
+
       return {
         name: file,
         path: itemPath,
@@ -34,7 +34,7 @@ export default async function ls(args, useTab = false) {
 
   if (useTab) {
     console.log(files.join("\t"));
+  } else {
+    console.table(result);
   }
-
-  console.table(result);
 }
