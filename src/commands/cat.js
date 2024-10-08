@@ -1,6 +1,6 @@
 import { createReadStream } from "fs";
 import fs from "fs/promises";
-import createError from "../helpers/createError";
+import createError from "../helpers/createError.js";
 
 export default async function cat(args) {
   if (args.length > 1 || args.length === 0) {
